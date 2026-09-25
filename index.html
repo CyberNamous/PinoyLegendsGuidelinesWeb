@@ -1056,9 +1056,9 @@
 
   /* ---------- Feedback widget ---------- */
   (function () {
-    /* Replace this with your deployed Cloudflare Worker URL (e.g. https://pinoy-legends-feedback.<subdomain>.workers.dev).
-       The Discord webhook itself is never used here — it stays server-side as a Worker secret. */
-    var FEEDBACK_ENDPOINT_URL = "https://f32a6d84.guidelines-pinoylegends.pages.dev/";
+    /* Same-origin Cloudflare Pages Function at functions/feedback.js —
+       no absolute URL or CORS config needed since it's on this domain. */
+    var FEEDBACK_ENDPOINT_URL = "/feedback";
 
     var fab = document.getElementById('feedback-fab');
     var overlay = document.getElementById('feedback-overlay');
@@ -1116,7 +1116,7 @@
       var rating = getRating();
       if (!rating || submitBtn.disabled) return;
 
-      if (FEEDBACK_ENDPOINT_URL.indexOf('') === 0) {
+      if (FEEDBACK_ENDPOINT_URL.indexOf('PASTE_YOUR') === 0) {
         statusEl.textContent = 'Feedback endpoint is not configured yet.';
         return;
       }
