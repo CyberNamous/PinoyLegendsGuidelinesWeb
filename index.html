@@ -1116,7 +1116,7 @@
       var rating = getRating();
       if (!rating || submitBtn.disabled) return;
 
-      if (FEEDBACK_ENDPOINT_URL.indexOf('PASTE_YOUR') === 0) {
+      if (FEEDBACK_ENDPOINT_URL.indexOf('https://guidelines-pinoylegends.pages.dev') === 0) {
         statusEl.textContent = 'Feedback endpoint is not configured yet.';
         return;
       }
