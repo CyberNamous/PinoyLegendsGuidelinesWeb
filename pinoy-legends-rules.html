@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinoy Legends — Official Community &amp; Gameplay Rules</title>
+<style>
+  :root{
+    --bg: #0a0c10;
+    --bg-elevated: #12151c;
+    --bg-elevated-2: #171b24;
+    --border: #262b37;
+    --border-strong: #37404f;
+    --text-primary: #ecedf2;
+    --text-secondary: #a3aab8;
+    --text-tertiary: #6b7280;
+    --accent: #c9a463;
+    --accent-soft: rgba(201,164,99,0.12);
+    --serif: Georgia, "Iowan Old Style", Palatino, "Palatino Linotype", "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --space-1: 0.5rem;
+    --space-2: 0.85rem;
+    --space-3: 1.25rem;
+    --space-4: 1.75rem;
+    --space-5: 2.5rem;
+    --space-6: 3.5rem;
+    --space-7: 5rem;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    text-align:center;
+    padding: var(--space-7) var(--space-4) var(--space-6);
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(ellipse at top, rgba(201,164,99,0.08), transparent 60%),
+      var(--bg);
+  }
+  .hero-badge{
+    display:inline-block;
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    color: var(--accent);
+    border:1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+    margin-bottom: var(--space-4);
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+    letter-spacing: 0.01em;
+    margin: 0 0 var(--space-2);
+  }
+  .hero h2{
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-4);
+  }
+  .hero p{
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  .hero-rule{
+    width: 64px;
+    height: 2px;
+    margin: var(--space-4) auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  /* ---------- Layout ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns: 240px minmax(0,1fr);
+    gap: var(--space-6);
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .toc{
+    position: sticky;
+    top: var(--space-4);
+    align-self: start;
+    display:flex;
+    flex-direction:column;
+    gap: 0.55rem;
+  }
+  .toc-label{
+    font-size:0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.4rem;
+  }
+  .toc a{
+    text-decoration:none;
+    color: var(--text-secondary);
+    font-size:0.92rem;
+    padding: 0.3rem 0;
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .toc a:hover, .toc a:focus-visible{
+    color: var(--text-primary);
+    border-left-color: var(--accent);
+    outline: none;
+  }
+
+  main.content{ min-width:0; }
+
+  /* ---------- Section ---------- */
+  .rule-section{
+    margin-bottom: var(--space-6);
+    scroll-margin-top: var(--space-4);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap: var(--space-3);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number{
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--accent);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-head h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    margin: 0;
+  }
+
+  .section-intro{
+    color: var(--text-secondary);
+    max-width: 72ch;
+    margin: 0 0 var(--space-4);
+  }
+
+  .subsections{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-3);
+  }
+  .subsections.single{
+    grid-template-columns: 1fr;
+  }
+
+  .subcard{
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: var(--space-4);
+  }
+  .subcard-head{
+    display:flex;
+    align-items:baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .subnum{
+    font-family: var(--serif);
+    color: var(--accent);
+    font-size: 0.95rem;
+    flex-shrink:0;
+  }
+  .subcard h3{
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0;
+    max-width: 50ch;
+  }
+  .subcard p{
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem;
+    max-width: 62ch;
+  }
+  .subcard p:last-child{ margin-bottom:0; }
+
+  ul.clause-list{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    flex-direction:column;
+    gap: 0.5rem;
+  }
+  ul.clause-list li{
+    position:relative;
+    padding-left: 1.1rem;
+    font-size: 0.93rem;
+    color: var(--text-primary);
+    max-width: 62ch;
+  }
+  ul.clause-list li::before{
+    content: "–";
+    position:absolute;
+    left:0;
+    color: var(--accent);
+  }
+
+  .clarification{
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--border);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 62ch;
+  }
+
+  /* ---------- Compliance panel ---------- */
+  .compliance-panel{
+    background: var(--bg-elevated-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: var(--space-5);
+    margin-top: var(--space-6);
+  }
+  .compliance-panel h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.35rem;
+    margin: 0 0 var(--space-2);
+  }
+  .compliance-panel p{
+    color: var(--text-secondary);
+    max-width: 68ch;
+    margin: 0 0 var(--space-4);
+  }
+  .agree-row{
+    display:flex;
+    align-items:flex-start;
+    gap: 0.75rem;
+    padding: var(--space-3);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: var(--space-4);
+  }
+  .agree-row input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+    accent-color: var(--accent);
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .agree-row span{
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+  .agree-row:has(input:focus-visible){
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  #agree-button{
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    padding: 0.85rem 1.75rem;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+  }
+  #agree-button:disabled{
+    background: var(--border-strong);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+  }
+  #agree-button:not(:disabled):hover{
+    background: #d9b578;
+  }
+  #agree-button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .agree-status{
+    display:inline-block;
+    margin-left: var(--space-3);
+    font-size: 0.88rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    text-align:center;
+    padding: var(--space-5) var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border);
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+  }
+  .site-footer strong{
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  /* ---------- Entrance animation ---------- */
+  .hero, .rule-section, .compliance-panel{
+    animation: fadeSlideUp 0.55s ease-out both;
+  }
+  .hero{ animation-delay: 0s; }
+  .rule-section:nth-of-type(1){ animation-delay: 0.06s; }
+  .rule-section:nth-of-type(2){ animation-delay: 0.11s; }
+  .rule-section:nth-of-type(3){ animation-delay: 0.16s; }
+  .rule-section:nth-of-type(4){ animation-delay: 0.21s; }
+  .rule-section:nth-of-type(5){ animation-delay: 0.26s; }
+  .rule-section:nth-of-type(6){ animation-delay: 0.31s; }
+  .compliance-panel{ animation-delay: 0.36s; }
+
+  @keyframes fadeSlideUp{
+    from{ opacity: 0; transform: translateY(14px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero, .rule-section, .compliance-panel{
+      animation: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px){
+    .layout{
+      grid-template-columns: 1fr;
+      padding: var(--space-4) var(--space-3);
+    }
+    .toc{
+      position: static;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--space-4);
+    }
+    .toc-label{ display:none; }
+    .toc a{
+      white-space: nowrap;
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      padding-left: 0;
+    }
+    .toc a:hover, .toc a:focus-visible{
+      border-left-color: transparent;
+      border-bottom-color: var(--accent);
+    }
+    .hero{ padding: var(--space-6) var(--space-3) var(--space-5); }
+  }
+
+  @media (min-width: 1600px){
+    .layout{ max-width: 1440px; }
+  }
+
+  /* ---------- Feedback widget ---------- */
+  .feedback-fab{
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    z-index: 40;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .feedback-fab:hover{
+    background: #d9b578;
+    transform: translateY(-2px);
+  }
+  .feedback-fab:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .feedback-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(4,5,7,0.72);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .feedback-overlay.is-open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .feedback-modal{
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-elevated-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: var(--space-5);
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.2s ease;
+  }
+  .feedback-overlay.is-open .feedback-modal{
+    transform: translateY(0) scale(1);
+  }
+
+  .feedback-modal-head{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .feedback-modal-head h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .feedback-close{
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.1rem 0.3rem;
+  }
+  .feedback-close:hover{ color: var(--text-primary); }
+  .feedback-close:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .feedback-modal p.feedback-intro{
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    margin: 0 0 var(--space-4);
+  }
+
+  .feedback-field{ margin-bottom: var(--space-4); }
+  .feedback-field > label.field-label{
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .feedback-scale-note{
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    margin-top: 0.4rem;
+  }
+
+  .rating-group{
+    display: flex;
+    gap: 0.6rem;
+  }
+  .rating-group input[type="radio"]{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .rating-group label{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .rating-group label:hover{ border-color: var(--text-secondary); }
+  .rating-group input:checked + label{
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .rating-group input:focus-visible + label{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  #feedback-text{
+    width: 100%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  #feedback-text:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .feedback-actions{
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  #feedback-submit{
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  #feedback-submit:disabled{
+    background: var(--border-strong);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+  }
+  #feedback-submit:not(:disabled):hover{ background: #d9b578; }
+  #feedback-submit:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .feedback-cancel{
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 0.88rem;
+    cursor: pointer;
+    padding: 0.5rem 0.2rem;
+  }
+  .feedback-cancel:hover{ color: var(--text-primary); }
+
+  .feedback-status{
+    display: block;
+    margin-top: var(--space-3);
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .feedback-overlay, .feedback-modal, .feedback-fab{
+      transition: none;
+    }
+  }
+
+  @media (max-width: 480px){
+    .feedback-fab{
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-badge">Version 1.0</span>
+  <h1>Pinoy Legends</h1>
+  <h2>Official Community &amp; Gameplay Rules</h2>
+  <p>These rules establish the standards of conduct for players and members participating in official Pinoy Legends spaces and activities.</p>
+  <div class="hero-rule"></div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Contents">
+    <span class="toc-label">Contents</span>
+    <a href="#sec-0">0. Purpose &amp; Scope</a>
+    <a href="#sec-1">1. Competitive Gameplay</a>
+    <a href="#sec-2">2. Community Conduct</a>
+    <a href="#sec-3">3. Staff &amp; Confidentiality</a>
+    <a href="#sec-4">4. Enforcement</a>
+    <a href="#sec-5">5. Rule Administration</a>
+    <a href="#compliance">Acknowledgement</a>
+  </nav>
+
+  <main class="content">
+
+    <!-- Section 0 -->
+    <section class="rule-section" id="sec-0">
+      <div class="section-head">
+        <span class="section-number">0</span>
+        <h2>Purpose &amp; Scope</h2>
+      </div>
+      <div class="subsections single">
+        <div class="subcard">
+          <p>These rules apply to official Pinoy Legends game services, Discord servers, social communities, events, tournaments, and other platforms or activities officially operated or recognized by Pinoy Legends Management.</p>
+          <p>All members are expected to understand and follow these rules. Community Administrators may consider the circumstances, severity, intent, evidence, prior violations, and impact of an incident when determining appropriate enforcement.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1 -->
+    <section class="rule-section" id="sec-1">
+      <div class="section-head">
+        <span class="section-number">1</span>
+        <h2>Competitive Gameplay &amp; Match Integrity</h2>
+      </div>
+      <div class="subsections">
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">1.1</span><h3>Anti-Cheat &amp; Unauthorized Software</h3></div>
+          <p>The use of cheats, hacks, unauthorized scripts, modifications, automation, or third-party tools that provide an unfair mechanical, informational, or visual advantage is prohibited.</p>
+          <ul class="clause-list">
+            <li>Script executors, unauthorized scripts, and game modifications.</li>
+            <li>Cheat, hack, exploit, or automation software.</li>
+            <li>Unauthorized macros or tools that automate gameplay actions.</li>
+            <li>Software that manipulates game files, memory, network traffic, or gameplay behavior.</li>
+            <li>Visual or informational tools that reveal information not normally available to the player.</li>
+            <li>Tools intended to bypass or disable game security systems.</li>
+            <li>Other software determined by Community Administrators to provide an unfair competitive advantage.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">1.2</span><h3>Match Conduct &amp; Griefing</h3></div>
+          <p>Players must make a genuine effort to participate in competitive matches and must not intentionally undermine their team's ability to compete.</p>
+          <ul class="clause-list">
+            <li>Intentionally feeding or repeatedly giving opponents kills.</li>
+            <li>Deliberately assisting the opposing team.</li>
+            <li>Intentionally refusing to participate in an active match.</li>
+            <li>Deliberately disrupting teammates or objectives.</li>
+            <li>Intentionally interfering with the draft or match-start process.</li>
+            <li>Deliberately wasting match time or preventing normal progression.</li>
+            <li>Coordinating actions intended to sabotage a match.</li>
+          </ul>
+          <div class="clarification">Poor performance, unfamiliarity with a character, strategic disagreement, or ordinary mistakes do not by themselves constitute griefing.</div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">1.3</span><h3>Exploitation of Software Flaws</h3></div>
+          <p>Players must not intentionally abuse bugs, glitches, unintended mechanics, map geometry, collision errors, or other software flaws to obtain an unfair advantage.</p>
+          <ul class="clause-list">
+            <li>Accessing areas not intended to be accessible.</li>
+            <li>Using glitches to avoid damage, detection, or normal game restrictions.</li>
+            <li>Repeatedly exploiting an unintended mechanic for competitive advantage.</li>
+            <li>Using bugs to manipulate match outcomes, rankings, rewards, or progression.</li>
+            <li>Distributing instructions intended to facilitate continued abuse of a known exploit.</li>
+          </ul>
+          <div class="clarification">Accidentally encountering a bug is not itself a violation. Intentional or repeated exploitation of a known advantage may constitute a serious offense. Significant bugs and exploits should be reported through official channels.</div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">1.4</span><h3>Matchmaking &amp; Competitive Manipulation</h3></div>
+          <p>Players must not manipulate competitive systems or match results.</p>
+          <ul class="clause-list">
+            <li>Win trading or coordinated intentional losses.</li>
+            <li>Match fixing or collusion with opposing players.</li>
+            <li>Queue or matchmaking manipulation.</li>
+            <li>Manipulation of rankings, statistics, rewards, or progression.</li>
+            <li>Abuse of matchmaking or competitive-system flaws.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">1.5</span><h3>Match Abandonment &amp; Disconnects</h3></div>
+          <p>Players should remain in active matches unless circumstances outside their reasonable control prevent them from doing so.</p>
+          <ul class="clause-list">
+            <li>Intentional abandonment or quitting may result in matchmaking restrictions or other penalties.</li>
+            <li>Repeated abandonment may result in escalating enforcement.</li>
+            <li>Unintentional disconnections, network instability, device failures, or other legitimate technical circumstances may be considered when reviewing repeated incidents.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="rule-section" id="sec-2">
+      <div class="section-head">
+        <span class="section-number">2</span>
+        <h2>Community Conduct</h2>
+      </div>
+      <div class="subsections">
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.1</span><h3>Respectful Conduct, Harassment &amp; Discrimination</h3></div>
+          <p>Members must treat others with reasonable respect. The following are prohibited:</p>
+          <ul class="clause-list">
+            <li>Targeted harassment, threats, intimidation, or persistent personal attacks.</li>
+            <li>Hate speech or discriminatory slurs.</li>
+            <li>Sexual harassment or unwanted sexual conduct.</li>
+            <li>Encouraging others to harass or target an individual.</li>
+            <li>Doxxing or distributing another person's private personal information.</li>
+            <li>Malicious attempts to publicly humiliate or intimidate another member.</li>
+          </ul>
+          <div class="clarification">Good-faith criticism, disagreement, complaints, reports, and appeals are permitted when expressed without prohibited harassment or threats.</div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.2</span><h3>Impersonation &amp; False Affiliation</h3></div>
+          <p>Members must not falsely represent themselves as Pinoy Legends Management, developers, Staff, Trial Moderators, official creators, official partners, or authorized representatives.</p>
+          <ul class="clause-list">
+            <li>Creating misleading accounts, pages, servers, or announcements that appear official.</li>
+            <li>Using official branding or identities to deceive members.</li>
+            <li>Claiming an unauthorized partnership or endorsement.</li>
+            <li>Presenting unofficial content as an official Pinoy Legends announcement.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.3</span><h3>Advertising, Promotions &amp; External Links</h3></div>
+          <p>Unauthorized advertising, solicitation, commercial promotion, referral links, server invitations, or external content distribution may be restricted.</p>
+          <ul class="clause-list">
+            <li>Unapproved Discord or community invitations.</li>
+            <li>Unsolicited commercial advertisements.</li>
+            <li>Referral or affiliate promotions without authorization.</li>
+            <li>Unapproved community or service promotions.</li>
+            <li>Suspicious downloads or potentially harmful files.</li>
+            <li>Phishing links or other deceptive links.</li>
+          </ul>
+          <div class="clarification">Authorized promotional activities may be permitted through approved programs, partnerships, events, or Management approval.</div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.4</span><h3>Scams, Fraud &amp; Malicious Activity</h3></div>
+          <p>Members must not use Pinoy Legends spaces to facilitate fraud, account theft, malicious activity, or deception.</p>
+          <ul class="clause-list">
+            <li>Phishing or credential harvesting.</li>
+            <li>Attempting to obtain another person's account credentials.</li>
+            <li>Fraudulent transactions or fake giveaways.</li>
+            <li>Malware or malicious file distribution.</li>
+            <li>Deceptive schemes intended to obtain money, accounts, or personal information.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.5</span><h3>Spam, Flooding &amp; Channel Misuse</h3></div>
+          <p>Members must use channels and communication spaces for their intended purposes.</p>
+          <ul class="clause-list">
+            <li>Message flooding or repetitive posting.</li>
+            <li>Excessive or disruptive emoji, mention, or reaction spam.</li>
+            <li>Repeated identical messages.</li>
+            <li>Deliberately disrupting conversations or channels.</li>
+            <li>Ignoring channel-specific posting requirements.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.6</span><h3>Privacy &amp; Personal Information</h3></div>
+          <p>Members must not share, publish, threaten to publish, or solicit private personal information without authorization.</p>
+          <ul class="clause-list">
+            <li>Home addresses, private phone numbers, passwords, account credentials, or other sensitive personal information.</li>
+            <li>Private conversations or identifying information when disclosure would violate another person's privacy.</li>
+            <li>Requests or attempts to obtain personal information for harassment or malicious purposes.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">2.7</span><h3>Inappropriate &amp; Explicit Content</h3></div>
+          <p>Content that is sexually explicit, excessively graphic, illegal, or otherwise inappropriate for the community may not be posted or distributed.</p>
+          <ul class="clause-list">
+            <li>Pornographic or sexually explicit material.</li>
+            <li>Graphic or excessively disturbing content.</li>
+            <li>Sexual content involving minors.</li>
+            <li>Content that violates applicable law or platform rules.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="rule-section" id="sec-3">
+      <div class="section-head">
+        <span class="section-number">3</span>
+        <h2>Staff, Management &amp; Confidentiality</h2>
+      </div>
+      <div class="subsections">
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">3.1</span><h3>Moderation &amp; Administrative Authority</h3></div>
+          <p>Management and authorized Staff are responsible for maintaining order, enforcing these rules, and protecting the integrity of the community.</p>
+          <ul class="clause-list">
+            <li>Members are expected to follow reasonable moderation instructions.</li>
+            <li>Members should cooperate with legitimate investigations.</li>
+            <li>Members should provide relevant information when reasonably requested during an investigation.</li>
+            <li>Moderation actions must not be intentionally obstructed or disrupted.</li>
+            <li>Questions and appeals should be raised through the designated process.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">3.2</span><h3>Staff Conduct &amp; Accountability</h3></div>
+          <p>Staff are expected to exercise their authority fairly, professionally, and consistently.</p>
+          <ul class="clause-list">
+            <li>Staff must not abuse moderation privileges.</li>
+            <li>Staff must not use authority for personal retaliation or personal gain.</li>
+            <li>Staff must not falsify or deliberately misrepresent evidence.</li>
+            <li>Staff must not disclose confidential information without authorization.</li>
+            <li>Good-faith reports or appeals must not be subject to retaliation.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">3.3</span><h3>Confidentiality &amp; Internal Information</h3></div>
+          <p>Confidential or restricted information obtained through community participation must not be publicly distributed without authorization.</p>
+          <ul class="clause-list">
+            <li>Private reports and moderation evidence.</li>
+            <li>Internal Staff or Management discussions.</li>
+            <li>Private administrative communications.</li>
+            <li>Unreleased game or development information.</li>
+            <li>Internal decisions or materials designated as confidential.</li>
+            <li>Personal information submitted during investigations.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">3.4</span><h3>Staff Reports &amp; Conflicts of Interest</h3></div>
+          <p>Concerns regarding Staff conduct or conflicts of interest should be submitted through the designated Management or administrative reporting process.</p>
+          <ul class="clause-list">
+            <li>Reports should be made in good faith and supported by relevant evidence where available.</li>
+            <li>Staff members should disclose relevant conflicts of interest when participating in a moderation decision.</li>
+            <li>Members must not fabricate reports or use the reporting process to harass another person.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="rule-section" id="sec-4">
+      <div class="section-head">
+        <span class="section-number">4</span>
+        <h2>Enforcement</h2>
+      </div>
+      <div class="subsections">
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">4.1</span><h3>Enforcement Principles</h3></div>
+          <p>Enforcement is based on the nature and circumstances of each incident. Not every violation will receive the same penalty.</p>
+          <ul class="clause-list">
+            <li>Severity and impact of the violation.</li>
+            <li>Intent and circumstances.</li>
+            <li>Available evidence.</li>
+            <li>Previous violations or repeated behavior.</li>
+            <li>Whether the conduct continued after a warning.</li>
+            <li>Cooperation during an investigation.</li>
+            <li>Other relevant circumstances.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">4.2</span><h3>Disciplinary Actions</h3></div>
+          <p>Depending on the circumstances, Community Administrators may apply one or more appropriate measures.</p>
+          <ul class="clause-list">
+            <li>Warning or formal notice.</li>
+            <li>Content removal.</li>
+            <li>Temporary communication restrictions.</li>
+            <li>Temporary community suspension.</li>
+            <li>Matchmaking or competitive restrictions.</li>
+            <li>Account suspension.</li>
+            <li>Permanent community removal.</li>
+            <li>Game-related sanctions where applicable.</li>
+            <li>Device or network restrictions where technically available and deemed necessary.</li>
+            <li>Other reasonable measures required to protect the community or game's integrity.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">4.3</span><h3>Ban Evasion</h3></div>
+          <p>Attempting to circumvent an active suspension, restriction, or permanent ban is prohibited.</p>
+          <ul class="clause-list">
+            <li>Using alternate accounts to bypass an active restriction.</li>
+            <li>Misrepresenting identity to regain access.</li>
+            <li>Using another person's account to circumvent enforcement.</li>
+            <li>Coordinating with others to bypass a restriction.</li>
+          </ul>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">4.4</span><h3>Appeals &amp; Reviews</h3></div>
+          <p>Members may request a review of an enforcement action through the designated official channel.</p>
+          <ul class="clause-list">
+            <li>Identify the action being appealed.</li>
+            <li>Provide relevant context and supporting evidence where available.</li>
+            <li>Remain respectful and factual.</li>
+            <li>Avoid repeated or duplicate appeals while a review is ongoing.</li>
+          </ul>
+          <div class="clarification">Harassment, threats, spam, or attempts to pressure Staff do not constitute a valid appeal and may result in additional enforcement.</div>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">4.5</span><h3>Administrative Discretion</h3></div>
+          <p>Community Administrators retain reasonable discretion when applying these rules. Enforcement may be adjusted according to the severity, evidence, circumstances, and potential impact of an incident.</p>
+          <ul class="clause-list">
+            <li>Technical enforcement measures are not automatic and may be used only when deemed appropriate and technically available.</li>
+            <li>A specific penalty is not guaranteed for every violation.</li>
+            <li>Similar incidents may require different responses when the circumstances materially differ.</li>
+            <li>Nothing in these rules prevents Management from taking reasonable action against conduct that clearly threatens community safety, game integrity, or platform security.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="rule-section" id="sec-5">
+      <div class="section-head">
+        <span class="section-number">5</span>
+        <h2>Rule Administration</h2>
+      </div>
+      <div class="subsections">
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">5.1</span><h3>Rule Updates</h3></div>
+          <p>Pinoy Legends Management may update, clarify, or reorganize these rules as the game and community develop. Significant changes should be communicated through appropriate official channels.</p>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">5.2</span><h3>Effective Date</h3></div>
+          <p>These rules take effect upon publication through an official Pinoy Legends channel unless a different effective date is expressly stated.</p>
+        </div>
+
+        <div class="subcard">
+          <div class="subcard-head"><span class="subnum">5.3</span><h3>Interpretation</h3></div>
+          <p>These rules provide general standards rather than an exhaustive list of every possible violation. Community Administrators may interpret and apply them reasonably to situations that are substantially similar to the conduct described above.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="compliance-panel" id="compliance">
+      <h2>Acknowledgement</h2>
+      <p>Before proceeding, please confirm that you have read and understood the community and gameplay rules outlined above. Continued participation in official Pinoy Legends spaces and activities constitutes agreement to comply with these rules.</p>
+      <label class="agree-row" for="agree-checkbox">
+        <input type="checkbox" id="agree-checkbox">
+        <span>I have read and agree to comply with the rules and guidelines provided above.</span>
+      </label>
+      <button id="agree-button" type="button" disabled>Acknowledge &amp; Continue</button>
+      <span class="agree-status" id="agree-status">Check the box above to enable this button.</span>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <strong>Pinoy Legends Management</strong> — Official Community &amp; Gameplay Rules &bull; Version 1.0
+</footer>
+
+<button class="feedback-fab" id="feedback-fab" type="button" aria-haspopup="dialog" aria-controls="feedback-overlay">Feedback</button>
+
+<div class="feedback-overlay" id="feedback-overlay">
+  <div class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+    <div class="feedback-modal-head">
+      <h3 id="feedback-title">Share your feedback</h3>
+      <button class="feedback-close" id="feedback-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <p class="feedback-intro">Your feedback is sent anonymously. No account or identifying information is attached.</p>
+
+    <div class="feedback-field">
+      <label class="field-label" id="rating-label">
+        How would you rate your experience?
+        <span class="feedback-scale-note">1 is the lowest, 5 is the highest.</span>
+      </label>
+      <div class="rating-group" role="radiogroup" aria-labelledby="rating-label">
+        <input type="radio" name="feedback-rating" id="rating-1" value="1"><label for="rating-1">1</label>
+        <input type="radio" name="feedback-rating" id="rating-2" value="2"><label for="rating-2">2</label>
+        <input type="radio" name="feedback-rating" id="rating-3" value="3"><label for="rating-3">3</label>
+        <input type="radio" name="feedback-rating" id="rating-4" value="4"><label for="rating-4">4</label>
+        <input type="radio" name="feedback-rating" id="rating-5" value="5"><label for="rating-5">5</label>
+      </div>
+    </div>
+
+    <div class="feedback-field">
+      <label class="field-label" for="feedback-text">Your thoughts</label>
+      <textarea id="feedback-text" rows="4" placeholder="Optional — share any details you'd like Management to know."></textarea>
+    </div>
+
+    <div class="feedback-actions">
+      <button id="feedback-submit" type="button" disabled>Send Feedback</button>
+      <button class="feedback-cancel" id="feedback-cancel" type="button">Cancel</button>
+    </div>
+    <span class="feedback-status" id="feedback-status">Select a rating to enable sending.</span>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var checkbox = document.getElementById('agree-checkbox');
+    var button = document.getElementById('agree-button');
+    var status = document.getElementById('agree-status');
+
+    checkbox.addEventListener('change', function () {
+      button.disabled = !checkbox.checked;
+      status.textContent = checkbox.checked
+        ? 'Ready to continue.'
+        : 'Check the box above to enable this button.';
+    });
+
+    button.addEventListener('click', function () {
+      if (button.disabled) return;
+      /* Hook your registration, verification, or redirect logic here. */
+      button.textContent = 'Acknowledged';
+      button.disabled = true;
+      status.textContent = 'Your acknowledgement has been recorded.';
+    });
+  })();
+
+  /* ---------- Feedback widget ---------- */
+  (function () {
+    /* Replace this with your deployed Cloudflare Worker URL (e.g. https://pinoy-legends-feedback.<subdomain>.workers.dev).
+       The Discord webhook itself is never used here — it stays server-side as a Worker secret. */
+    var FEEDBACK_ENDPOINT_URL = "PASTE_YOUR_WORKER_URL_HERE";
+
+    var fab = document.getElementById('feedback-fab');
+    var overlay = document.getElementById('feedback-overlay');
+    var closeBtn = document.getElementById('feedback-close');
+    var cancelBtn = document.getElementById('feedback-cancel');
+    var submitBtn = document.getElementById('feedback-submit');
+    var textField = document.getElementById('feedback-text');
+    var statusEl = document.getElementById('feedback-status');
+    var ratingInputs = document.querySelectorAll('input[name="feedback-rating"]');
+
+    function getRating() {
+      for (var i = 0; i < ratingInputs.length; i++) {
+        if (ratingInputs[i].checked) return ratingInputs[i].value;
+      }
+      return null;
+    }
+
+    function resetForm() {
+      ratingInputs.forEach(function (input) { input.checked = false; });
+      textField.value = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Send Feedback';
+      statusEl.textContent = 'Select a rating to enable sending.';
+    }
+
+    function openModal() {
+      overlay.classList.add('is-open');
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      document.removeEventListener('keydown', onKeydown);
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') closeModal();
+    }
+
+    fab.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    ratingInputs.forEach(function (input) {
+      input.addEventListener('change', function () {
+        submitBtn.disabled = false;
+        statusEl.textContent = 'Ready to send.';
+      });
+    });
+
+    submitBtn.addEventListener('click', function () {
+      var rating = getRating();
+      if (!rating || submitBtn.disabled) return;
+
+      if (FEEDBACK_ENDPOINT_URL.indexOf('PASTE_YOUR') === 0) {
+        statusEl.textContent = 'Feedback endpoint is not configured yet.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      statusEl.textContent = 'Sending your feedback…';
+
+      var payload = {
+        rating: Number(rating),
+        thoughts: textField.value.trim()
+      };
+
+      fetch(FEEDBACK_ENDPOINT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Request failed');
+          statusEl.textContent = 'Thank you — your feedback has been sent.';
+          submitBtn.textContent = 'Sent';
+          setTimeout(function () {
+            closeModal();
+            resetForm();
+          }, 1200);
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Feedback';
+          statusEl.textContent = 'Something went wrong. Please try again.';
+        });
+    });
+  })();
+</script>
+
+</body>
+</html>
