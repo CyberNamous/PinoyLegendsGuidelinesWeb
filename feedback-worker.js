@@ -17,7 +17,7 @@
  * actual site origin so only your page can call this Worker.
  */
 
-const ALLOWED_ORIGIN = "https://guidelines-pinoylegends.pages.dev"; // e.g. "https://your-domain.com"
+const ALLOWED_ORIGIN = "https://f32a6d84.guidelines-pinoylegends.pages.dev/"; // e.g. "https://your-domain.com"
 
 function corsHeaders() {
   return {
