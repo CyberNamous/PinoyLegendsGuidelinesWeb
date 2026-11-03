@@ -318,6 +318,44 @@
     color: var(--text-tertiary);
   }
 
+  /* ---------- Entry / confirmation code ---------- */
+  .code-field{ margin-bottom: var(--space-4); }
+  .code-field label{
+    display:block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-1);
+  }
+  #entry-code{
+    width: 100%;
+    max-width: 18rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 0.7rem 0.9rem;
+  }
+  #entry-code:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+  .confirm-box{
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    background: var(--bg-elevated);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+  }
+  .confirm-box p{ margin: 0 0 var(--space-2); }
+  #confirm-code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1.6rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    user-select: all;
+  }
+
   /* ---------- Footer ---------- */
   .site-footer{
     text-align:center;
@@ -980,12 +1018,20 @@
     <section class="compliance-panel" id="compliance">
       <h2>Acknowledgement</h2>
       <p>Before proceeding, please confirm that you have read and understood the community and gameplay rules outlined above. Continued participation in official Pinoy Legends spaces and activities constitutes agreement to comply with these rules.</p>
+      <div class="code-field">
+        <label for="entry-code">Your entry code (shown by the verification bot in Discord)</label>
+        <input type="text" id="entry-code" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" placeholder="XXXX-XXXX">
+      </div>
       <label class="agree-row" for="agree-checkbox">
         <input type="checkbox" id="agree-checkbox">
         <span>I have read and agree to comply with the rules and guidelines provided above.</span>
       </label>
       <button id="agree-button" type="button" disabled>Acknowledge &amp; Continue</button>
-      <span class="agree-status" id="agree-status">Check the box above to enable this button.</span>
+      <span class="agree-status" id="agree-status" aria-live="polite">Enter your entry code and check the box to enable this button.</span>
+      <div class="confirm-box" id="confirm-box" hidden>
+        <p>Your confirmation code. Go back to Discord, press <strong>Enter Confirmation Code</strong> and type it in:</p>
+        <div id="confirm-code"></div>
+      </div>
     </section>
 
   </main>
@@ -1034,23 +1080,50 @@
 
 <script>
   (function () {
+    /* Same-origin Cloudflare Pages Function at functions/acknowledge.js */
+    var ACK_ENDPOINT_URL = '/acknowledge';
     var checkbox = document.getElementById('agree-checkbox');
     var button = document.getElementById('agree-button');
     var status = document.getElementById('agree-status');
+    var entry = document.getElementById('entry-code');
+    var box = document.getElementById('confirm-box');
+    var codeOut = document.getElementById('confirm-code');
+    var HINT = 'Enter your entry code and check the box to enable this button.';
 
-    checkbox.addEventListener('change', function () {
-      button.disabled = !checkbox.checked;
-      status.textContent = checkbox.checked
-        ? 'Ready to continue.'
-        : 'Check the box above to enable this button.';
-    });
+    function cleanEntry() { return entry.value.toUpperCase().replace(/[\s-]/g, ''); }
+    function refresh() {
+      var ready = checkbox.checked && /^[A-HJ-NP-Z2-9]{8}$/.test(cleanEntry());
+      button.disabled = !ready;
+      status.textContent = ready ? 'Ready to continue.' : HINT;
+    }
+    checkbox.addEventListener('change', refresh);
+    entry.addEventListener('input', refresh);
 
     button.addEventListener('click', function () {
       if (button.disabled) return;
-      /* Hook your registration, verification, or redirect logic here. */
-      button.textContent = 'Acknowledged';
       button.disabled = true;
-      status.textContent = 'Your acknowledgement has been recorded.';
+      button.textContent = 'Checking…';
+      status.textContent = '';
+      fetch(ACK_ENDPOINT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: cleanEntry() })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('bad');
+          return res.json();
+        })
+        .then(function (data) {
+          codeOut.textContent = data.confirmation;
+          box.hidden = false;
+          button.textContent = 'Acknowledged';
+          status.textContent = 'Your confirmation code is shown below.';
+        })
+        .catch(function () {
+          button.textContent = 'Acknowledge & Continue';
+          refresh();
+          status.textContent = 'That code was not accepted. Check your entry code and try again.';
+        });
     });
   })();
 
